@@ -61,6 +61,8 @@ void _printError(const char *_message);
 void _updateEnvironmentVariables(char *_currentDir, char *_oldPwd);
 int _changeDirectory(const char *_targetDir, char **_oldPwd);
 
+void run_shell_from_file(const char *filename);
+
 void teamfa_print_aliases();
 void teamfa_print_specified_aliases(char **alias_names, int count);
 void teamfa_define_aliases(char **alias_definitions, int count);
