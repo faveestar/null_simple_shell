@@ -1,10 +1,9 @@
 #include "team_fa_lib.h"
 
 /**
-* _printError -This function print error message.
+* _printError - Print error message.
 *
-* @_message: string parameter
-* Return: Always void (success).
+* @_message: Error message string.
 */
 void _printError(const char *_message)
 {
@@ -12,12 +11,10 @@ _printf("cd: %s\n", _message);
 }
 
 /**
-* _updateEnvironmentVariables -This function update env variables.
+* _updateEnvironmentVariables - Update environment variables PWD and OLDPWD.
 *
-* @_currentDir: string parameter1
-* @_oldPwd: string parameter2
-*
-* Return: Always void (success).
+* @_currentDir: Current directory path.
+* @_oldPwd: Old working directory path.
 */
 void _updateEnvironmentVariables(char *_currentDir, char *_oldPwd)
 {
@@ -33,13 +30,14 @@ setenv("OLDPWD", _oldPwd, 1);
 free(_oldPwd);
 }
 }
+
 /**
-* _changeDirectory -This function change directory.
+* _changeDirectory - Change the current working directory.
 *
-* @_targetDir: string parameter1
-* @_oldPwd: string parameter2
+* @_targetDir: Target directory path to change to.
+* @_oldPwd: Pointer to store the old working directory.
 *
-* Return: Always integer (success).
+* Return: 0 on success, 1 on failure.
 */
 int _changeDirectory(const char *_targetDir, char **_oldPwd)
 {
@@ -59,14 +57,16 @@ return (1);
 
 return (0);
 }
+
 /**
-* main -Entry point.
+* helper_cd - Helper function for the cd built-in command.
 *
-* @argCount: argument count parameter1
-* @argVector: argument vector parameter2
-* Return: Always 0 (success).
+* @argCount: Argument count.
+* @argVector: Argument vector.
+*
+* Return: 0 on success, 1 on failure.
 */
-int main(int argCount, char *argVector[])
+int helper_cd(int argCount, char *argVector[])
 {
 char *_home_dir = getenv("HOME"), *_old_pwd = NULL, *_current_dir;
 if (_home_dir == NULL)
@@ -74,6 +74,7 @@ if (_home_dir == NULL)
 _printError("HOME environment variable not set");
 return (1);
 }
+
 if (argCount == 1 || (argCount == 2 && _strcmp(argVector[1], "~") == 0))
 {
 if (_changeDirectory(_home_dir, &_old_pwd) != 0)
@@ -95,16 +96,15 @@ return (1);
 else
 {
 if (_changeDirectory(argVector[1], &_old_pwd) != 0)
-{
 return (1);
 }
-}
+
 _current_dir = getcwd(NULL, 0);
 if (_current_dir == NULL)
-{
 _printError(strerror(errno));
 return (1);
-}
+
 _updateEnvironmentVariables(_current_dir, _old_pwd);
 return (0);
 }
+

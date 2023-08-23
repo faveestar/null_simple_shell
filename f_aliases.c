@@ -94,14 +94,14 @@ alias_count++;
 }
 
 /**
-* main -Entry point.
+* helper_aliases -This function help alias.
 *
 * @argCount: integer parameter
 * @argVector: string parameter
 *
 * Return: Always 0 (success).
 */
-int main(int argCount, char *argVector[])
+int helper_aliases(int argCount, char *argVector[])
 {
 if (argCount == 1)
 {

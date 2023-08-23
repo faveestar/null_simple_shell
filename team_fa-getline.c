@@ -22,12 +22,12 @@ return (count);
 }
 
 /**
-* main -Entry point.
+* helper_getline -This function help getline.
 *
 * @void: void parameter
 * Return: Always 0 (success).
 */
-int main(void)
+int helper_getline(void)
 {
 char *team_fa_line = NULL;
 /* Initialize n to a value */

@@ -30,34 +30,6 @@ process_exit_command();
 }
 }
 
-/**
-* execute_command -This function execute command.
-*
-* @input_tokens: string parameter
-* Return: Always void (success).
-*/
-void execute_command(char **input_tokens)
-{
-pid_t processID = fork();
-
-if (processID == -1)
-{
-perror("Fork error");
-exit(EXIT_FAILURE);
-}
-else if (processID == 0)
-{
-/* child process */
-run_executable(input_tokens);
-}
-else
-{
-/* parent process */
-waitpid(processID, NULL, 0); /* wait for child to finish */
-/* free memory allocated for tokens */
-free_tokens(input_tokens);
-}
-}
 
 /**
 * process_user_input -This function process user input.

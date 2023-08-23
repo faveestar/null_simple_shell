@@ -41,12 +41,12 @@ return (_token_start);
 }
 
 /**
-* main -Entry point.
+* helper_strtok -This function help strtok.
 *
 * @void: void parameter
 * Return: Always 0 (success).
 */
-int main(void)
+int helper_strtok(void)
 {
 char input[] = "Team,Favour,&,Azeez,on,this";
 char *saveptr;

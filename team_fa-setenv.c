@@ -27,7 +27,7 @@ if (!overwrite && getenv(name) != NULL)
 return (0);
 }
 
-env_entry = malloc(_strlen(name) + strlen(value) + 2);
+env_entry = malloc(_strlen(name) + _strlen(value) + 2);
 if (env_entry == NULL)
 {
 perror("setenv");
@@ -73,13 +73,13 @@ return (0);
 }
 
 /**
-* main -Entry point
+* helper_setenv  -This function help setenv
 *
 * @void: void parameter
 *
 * Return: Always 0 (success).
 */
-int main(void)
+int helper_setenv(void)
 {
 /* Example usage of setenv */
 if (teamfa_setenv("MY_VARIABLE", "my_value", 1) == 0)
