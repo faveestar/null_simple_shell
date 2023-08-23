@@ -66,6 +66,14 @@ void run_shell_from_file(const char *filename);
 void teamfa_print_aliases();
 void teamfa_print_specified_aliases(char **alias_names, int count);
 void teamfa_define_aliases(char **alias_definitions, int count);
+
+
+/* list of helper functions */
+int helper_aliases(int argCount, char *argVector[]);
+int helper_cd(int argCount, char *argVector[]);
+int helper_strtok(void);
+int helper_setenv(void);
+int helper_getline(void);
 /* end of simple shell header content */
 
 
