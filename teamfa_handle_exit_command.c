@@ -1,3 +1,4 @@
+#include "team_fa_lib.h"
 /**
 * handle_exit_command -This function help handle exit.
 *
