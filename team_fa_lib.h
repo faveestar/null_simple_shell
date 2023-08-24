@@ -5,17 +5,6 @@
 
 /* simple shell project header content */
 
-/**
-* struct _Person - Represents a person's information.
-* @_name: The name of the person.
-* @_month: The present month in ALX SE
-*/
-struct _Person
-{
-char *_name;
-int _month;
-};
-
 
 /**
 * struct Alias - Represents Aliases.
