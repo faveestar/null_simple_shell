@@ -22,7 +22,7 @@ int _month;
 * @_name: The name of Alias.
 * @_value: The value of Alias
 */
-typedef struct
+typedef struct Alias
 {
 char *_name;
 char *_value;
@@ -47,12 +47,12 @@ char *_value;
 
 void tokenize_input(char *input, char **tokens);
 void run_executable(char **tokens);
-void process_exit_command();
-void process_user_input();
+void process_exit_command(void);
+void process_user_input(void);
 void free_tokens(char **tokens);
 void handle_exit_command(char **input_tokens);
 void execute_command(char **input_tokens);
-void process_user_input();
+void process_user_input(void);
 ssize_t teamfa_getline(char **lineptr, size_t *n, FILE *stream);
 char *teamfa_strtok(char *string, const char *delimeter, char **saveptr);
 int teamfa_setenv(const char *name, const char *value, int overwrite);
@@ -63,7 +63,7 @@ int _changeDirectory(const char *_targetDir, char **_oldPwd);
 
 void run_shell_from_file(const char *filename);
 
-void teamfa_print_aliases();
+void teamfa_print_aliases(void);
 void teamfa_print_specified_aliases(char **alias_names, int count);
 void teamfa_define_aliases(char **alias_definitions, int count);
 
