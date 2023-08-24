@@ -45,6 +45,7 @@ char *_value;
 
 /* list of function prototypes */
 
+int beautiful_code(void);
 void tokenize_input(char *input, char **tokens);
 void run_executable(char **tokens);
 void process_exit_command(void);

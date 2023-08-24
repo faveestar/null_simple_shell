@@ -7,17 +7,17 @@
 */
 void _kudos_person(struct _Person _person)
 {
-_printf("Congratulations to you %s! You are %d", _person._name, _person._month);
+_printf("Congratulations! %s! You are %d", _person._name, _person._month);
 _printf("-months into ALX SE Programme, you deserve been celebrated");
 _printf(" for the win so far.\n\n\n");
 }
 
 /**
-* main -The program Entry point.
+* beautiful_code -This program is betty compliant
 *
 * Return: Always 0 (success).
 */
-int main(void)
+int beautiful_code(void)
 {
 /* Create a person named Favour */
 struct _Person favour = {"Favour Abalogu", 3};
