@@ -16,6 +16,7 @@
 
 char *read_input(void);
 void execute_command(char *_command);
+void run_command(char* _command);
 
 #endif /* TEAMFA_SHELL_H */
 

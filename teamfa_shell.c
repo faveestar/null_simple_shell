@@ -11,7 +11,7 @@ int main(void)
 while (1)
 {
 char *command = read_input();
-execute_command(command);
+run_command(command);
 free(command);
 }
 
