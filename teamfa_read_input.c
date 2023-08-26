@@ -1,41 +1,23 @@
 #include "teamfa_shell.h"
-
 /**
-* read_input -The function read input from stdin.
+* teamfa_read_line - This function read line from stdin.
 *
 * @void: parameter
-* Return: Always character array (success).
+* Return: character on success
 */
-
-char *read_input(void)
+char *teamfa_read_line(void)
 {
-char *line = NULL;
-size_t len = 0;
-ssize_t read;
+char *__line = NULL;
+size_t __bufsize = 0;
+ssize_t __chars_read;
 
-printf(PROMPT);
-fflush(stdout); /* Ensure prompt is displayed */
+__chars_read = getline(&__line, &__bufsize, stdin);
 
-read = getline(&line, &len, stdin);
-
-if (read == -1)
+if (__chars_read == -1)
 {
-if (feof(stdin))
-{
-/* Handle end of file (Ctrl+D) */
-free(line);
-exit(0);
-}
-else
-{
-perror("getline");
-free(line);
+perror("input error");
 exit(1);
 }
-}
 
-/* Remove the trailing newline character */
-line[strcspn(line, "\n")] = '\0';
-
-return (line);
+return (__line);
 }

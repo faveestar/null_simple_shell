@@ -1,40 +1,37 @@
+#include "teamfa_shell.h"
 /**
-* execute_command -The function execute the command given.
+* teamfa_execute_command - This function execute command.
 *
-* @_command: parameter
-* Return: Always 0 (success).
+* @cmd: parameter
+* Return: integer
 */
-void execute_command(char *_command)
+int teamfa_execute_command(char **cmd)
 {
-pid_t pid;
-int status;
-pid = fork();
+pid_t __child_pid;
+int __status;
 
-if (pid == 0)
+if (_strcmp("exit", cmd[0]) == 0)
+return (-1);
+
+__child_pid = fork();
+
+if (__child_pid == -1)
 {
-if (access(_command, X_OK) == 0)
+perror("Fork error");
+return (1);
+}
+else if (__child_pid == 0)
 {
-if (execlp(_command, _command, NULL) == -1)
+if (execvp(cmd[0], cmd) == -1)
 {
-perror("exec");
+perror("Command execution error");
 exit(1);
 }
 }
 else
 {
-ssize_t _result = write(STDERR_FILENO, ERROR_MESSAGE, strlen(ERROR_MESSAGE));
-if (_result == -1)
-{
-perror("write");
+waitpid(__child_pid, &__status, 0);
 }
-_exit(1);
-}
-}
-else if (pid > 0)
-waitpid(pid, &status, 0);
-else
-{
-perror("fork");
-exit(1);
-}
+
+return (0);
 }

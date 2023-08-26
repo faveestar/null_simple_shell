@@ -1,7 +1,6 @@
 #ifndef TEAMFA_SHELL_H
 #define TEAMFA_SHELL_H
 
-/* include headers */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,13 +9,14 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/* function prototypes */
+int teamfa_execute_command(char **cmd);
+char *teamfa_read_line(void);
+char **teamfa_tokenize_string(char *str);
+int _strcmp(char *s1, char *s2);
 
-#define PROMPT "teamfa$> "
-#define ERROR_MESSAGE "No such file or directory\n"
 
-char *read_input(void);
-void execute_command(char *_command);
-void run_command(char* _command);
+
 
 #endif /* TEAMFA_SHELL_H */
 
